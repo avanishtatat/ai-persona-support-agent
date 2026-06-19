@@ -40,14 +40,22 @@ def add_chunks_to_vector_store(chunks):
         )
     return len(chunks)
 
+def search_similar_chunks(query, top_k=3):
+    query_embedding = get_embedding(query)
+
+    results = collection.query(
+        query_embeddings=[query_embedding],
+        n_results=top_k 
+    )
+
+    return results 
+
 if __name__ == "__main__":
-    from src.rag_pipeline import load_documents, split_documents
+    query = "I forgot my password."
+    
+    results = search_similar_chunks(query)
 
-    docs = load_documents()
-    chunks = split_documents(docs)
-
-    num_added = add_chunks_to_vector_store(chunks)
-    print(f"Added {num_added} chunks to the vector store.")
+    print(f"Results for query: {results}")
 
 
 
