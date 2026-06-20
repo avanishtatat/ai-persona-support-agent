@@ -27,9 +27,6 @@ if st.button('Generate response'):
 
             results = search_similar_chunks(user_query)
             context_chunks = format_search_results(results)
-            st.write("DEBUG - Chunks Retrieved:", len(context_chunks))
-            st.write("DEBUG - Files:", [chunk["source"] for chunk in context_chunks])
-            st.write("DEBUG - Scores:", [chunk["score"] for chunk in context_chunks])
 
             response = generate_adaptive_response(user_query, persona, context_chunks)
         

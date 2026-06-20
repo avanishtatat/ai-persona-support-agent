@@ -4,7 +4,6 @@ from pypdf import PdfReader
 
 def load_documents():
     documents = []
-    print('DATA_DIR:', DATA_DIR.resolve())
     for file_path in DATA_DIR.iterdir():
         if file_path.suffix not in SUPPORTED_EXTENSIONS:
             continue
