@@ -169,6 +169,10 @@ This application is deployed using **Streamlit Community Cloud**.
 
 - Live App: `https://ai-persona-support-agent-ja2ydakgcx4sla3gpzyczh.streamlit.app/`
 
+## Demo Video 🎥
+
+- YouTube Demo: [https://youtu.be/ZkDUmtsF4rA](https://youtu.be/ZkDUmtsF4rA)
+
 ## Screenshots 🖼️
 
 ![Deployed Home](screenshots/deployed-home.png)
