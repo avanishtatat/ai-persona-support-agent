@@ -15,3 +15,5 @@ CHROMA_DB_PATH = './chroma_db'
 COLLECTION_NAME = 'support_documents'
 
 EMBEDDING_MODEL_NAME = 'gemini-embedding-001'
+
+CONFIDENCE_THRESHOLD = 0.45

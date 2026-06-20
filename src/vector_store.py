@@ -50,6 +50,27 @@ def search_similar_chunks(query, top_k=3):
 
     return results 
 
+def format_search_results(results):
+    context_chunks = []
+
+    if not results or not results['documents']:
+        return context_chunks
+    
+    documents = results['documents'][0]
+    metadatas = results['metadatas'][0]
+    distances = results['distances'][0]
+
+    for i in range(len(documents)):
+        chunk_info = {
+            'text': documents[i],
+            'source': metadatas[i]['source'],
+            'chunk_index': metadatas[i]['chunk_index'],
+            'score': 1 - distances[i]
+        }
+        context_chunks.append(chunk_info)
+
+    return context_chunks
+
 if __name__ == "__main__":
     query = "I forgot my password."
     
