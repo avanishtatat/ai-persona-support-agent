@@ -45,10 +45,15 @@ def initialize_vector_store():
     if collection.count() > 0:
         return 
     
+    print("Loading Documents...")
     documents = load_documents()
+    print(f"Loaded {len(documents)} documents.")
     chunks = split_documents(documents)
-    
+    print(f"Split documents into {len(chunks)} chunks.")
+
     add_chunks_to_vector_store(chunks)
+    print("Collection count after initialization:", collection.count())
+    print("Vector store initialized successfully.")
 
 def search_similar_chunks(query, top_k=3):
     query_embedding = get_embedding(query)
