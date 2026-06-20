@@ -1,9 +1,11 @@
 import streamlit as st
 from src.classifier import classify_persona
-from src.vector_store import search_similar_chunks, format_search_results
+from src.vector_store import search_similar_chunks, format_search_results, initialize_vector_store
 from src.generator import generate_adaptive_response
 
 st.set_page_config(page_title="AI Customer Support Agent", page_icon="🤖", layout="wide")
+
+initialize_vector_store()
 
 st.title("🤖 AI Customer Support Agent")
 st.write("Adaptive RAG powered customer support using Gemini and ChromaDB")

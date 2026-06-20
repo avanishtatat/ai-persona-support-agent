@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from google import genai 
 import chromadb
 from src.config import CHROMA_DB_PATH, COLLECTION_NAME, EMBEDDING_MODEL_NAME
+from src.rag_pipeline import load_documents, split_documents
 
 load_dotenv()
 
@@ -40,6 +41,15 @@ def add_chunks_to_vector_store(chunks):
         )
     return len(chunks)
 
+def initialize_vector_store():
+    if collection.count() > 0:
+        return 
+    
+    documents = load_documents()
+    chunks = split_documents(documents)
+    
+    add_chunks_to_vector_store(chunks)
+
 def search_similar_chunks(query, top_k=3):
     query_embedding = get_embedding(query)
 
@@ -70,6 +80,7 @@ def format_search_results(results):
         context_chunks.append(chunk_info)
 
     return context_chunks
+
 
 if __name__ == "__main__":
     query = "I forgot my password."
