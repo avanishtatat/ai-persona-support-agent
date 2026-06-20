@@ -167,7 +167,7 @@ streamlit run app.py
 
 This application is deployed using **Streamlit Community Cloud**.
 
-- Live App: `https://<your-streamlit-app-url>.streamlit.app`
+- Live App: `https://ai-persona-support-agent-ja2ydakgcx4sla3gpzyczh.streamlit.app/`
 
 ## Screenshots 🖼️
 
@@ -197,9 +197,9 @@ This application is deployed using **Streamlit Community Cloud**.
 
 ## Author 👤
 
-- GitHub: `https://github.com/<your-username>`
-- LinkedIn: `https://linkedin.com/in/<your-linkedin>`
-- Portfolio: `https://<your-portfolio-domain>`
+- GitHub: `https://github.com/avanishtatat`
+- LinkedIn: `https://linkedin.com/in/avanishtiwari18`
+- Portfolio: `https://avanishtiwari.vercel.app`
 
 ## License 📄
 

@@ -221,3 +221,6 @@ __marimo__/
 
 # ChromaDB
 chroma_db/
+
+# macOS
+.DS_Store
