@@ -1,21 +1,22 @@
-# AI Persona Support Agent
+# ResolveAI – AI Customer Support Platform
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![Gemini](https://img.shields.io/badge/Google-Gemini-4285F4?logo=google&logoColor=white)](https://ai.google.dev/)
 [![ChromaDB](https://img.shields.io/badge/Vector%20DB-ChromaDB-5A67D8)](https://www.trychroma.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#license)
 
-An intelligent **Retrieval-Augmented Generation (RAG)** customer support assistant that adapts its communication style based on user persona.
+ResolveAI is a Retrieval-Augmented Generation (RAG) customer support assistant that answers user queries using a custom knowledge base, identifies the user's persona, adapts response tone, and escalates low-confidence queries to human support.
 
-Built with **Google Gemini**, **ChromaDB**, **LangChain text splitting**, and **Streamlit**, this project retrieves answers from a custom knowledge base before generation, reducing hallucinations and improving response reliability.
+It is built with Google Gemini, ChromaDB, LangChain text splitting, and Streamlit. The project demonstrates practical AI engineering concepts such as document ingestion, semantic search, embeddings, persona classification, grounded response generation, and escalation handling.
 
-## Why This Project? 🚀
+## Key Highlights 🚀
 
-- Demonstrates production-relevant **RAG architecture** for support automation
-- Implements **persona-aware response generation** for better user experience
-- Includes **human escalation logic** for low-confidence retrieval scenarios
-- Showcases practical AI engineering: ingestion, embeddings, retrieval, and UI
+- Built a RAG pipeline to retrieve relevant answers from PDF and Markdown knowledge base documents
+- Used ChromaDB for vector storage and semantic search
+- Implemented persona classification for Technical Expert, Frustrated User, and Business Executive users
+- Generated context-aware responses using Google Gemini
+- Added confidence-based escalation when retrieved context is insufficient
+- Created a Streamlit interface for testing support queries interactively
 
 ## Features ✨
 
@@ -205,6 +206,4 @@ This application is deployed using **Streamlit Community Cloud**.
 - LinkedIn: `https://linkedin.com/in/avanishtiwari18`
 - Portfolio: `https://avanishtiwari.vercel.app`
 
-## License 📄
 
-MIT License (add a `LICENSE` file to finalize).

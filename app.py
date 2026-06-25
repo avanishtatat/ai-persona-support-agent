@@ -3,12 +3,12 @@ from src.classifier import classify_persona
 from src.vector_store import search_similar_chunks, format_search_results, initialize_vector_store
 from src.generator import generate_adaptive_response
 
-st.set_page_config(page_title="AI Customer Support Agent", page_icon="🤖", layout="wide")
+st.set_page_config(page_title="ResolveAI", page_icon="🤖", layout="wide")
 
 initialize_vector_store()
 
-st.title("🤖 AI Customer Support Agent")
-st.write("Adaptive RAG powered customer support using Gemini and ChromaDB")
+st.markdown("# 🤖 ResolveAI")
+st.markdown("### AI Customer Support Platform")
 
 user_query = st.text_area('Enter your query here:', height=150, placeholder="Example: I forgot my password and I am not receiving the OTP.")
 
