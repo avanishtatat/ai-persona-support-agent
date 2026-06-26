@@ -85,7 +85,6 @@ flowchart TD
 customer-support-agent/
 |
 |-- app.py
-|-- chroma_db
 |-- requirements.txt
 |-- README.md
 |-- .env.example
@@ -106,7 +105,6 @@ customer-support-agent/
 | File | Responsibility |
 |---|---|
 | `app.py` | Streamlit entry point; handles user interaction and app flow |
-| `chroma_db` | Pre-built ChromaDB vector store containing generated embeddings for faster startup and reduced embedding API usage |
 | `requirements.txt` | Python dependencies for local/dev/deployment setup |
 | `README.md` | Project documentation |
 | `.env.example` | Template for environment variable configuration |
@@ -166,9 +164,7 @@ streamlit run app.py
 
 > **Note**
 >
-> This project includes a pre-built **ChromaDB** vector store generated from the sample knowledge-base documents. Including the vector database avoids regenerating embeddings on every deployment, resulting in faster startup and reduced embedding API usage.
->
-> If you modify or add knowledge-base documents, regenerate the vector store before running or deploying the application.
+> ResolveAI builds a local ChromaDB vector store from the knowledge-base documents during startup when no existing collection is found. The generated `chroma_db/` directory is ignored from Git because ChromaDB persistence files may not be portable across deployment environments.
 
 ## Environment Variables 🔐
 
