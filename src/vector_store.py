@@ -43,9 +43,12 @@ def add_chunks_to_vector_store(chunks):
     return len(chunks)
 
 def initialize_vector_store():
-    if collection.count() > 0:
-        print("Using existing ChromaDB collection.")
-        return 
+    try:
+        if collection.count() > 0:
+            print("Using existing ChromaDB collection.")
+            return
+    except Exception as error:
+        print(f"ChromaDB collection check failed. Rebuilding collection. Error: {error}")
     
     print("Building ChromaDB collection...")
     
