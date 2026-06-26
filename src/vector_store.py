@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from google import genai 
 import chromadb
+from src.ai_utils import retry_ai_call
 from src.config import CHROMA_DB_PATH, COLLECTION_NAME, EMBEDDING_MODEL_NAME
 from src.rag_pipeline import load_documents, split_documents
 
@@ -28,7 +29,7 @@ def get_embedding(text):
 
 def add_chunks_to_vector_store(chunks):
     for chunk in chunks:
-        embedding = get_embedding(chunk['text'])
+        embedding = retry_ai_call(get_embedding, chunk['text'])
 
         collection.add(
             ids=[chunk['id']],
@@ -51,7 +52,7 @@ def initialize_vector_store():
     add_chunks_to_vector_store(chunks)
 
 def search_similar_chunks(query, top_k=3):
-    query_embedding = get_embedding(query)
+    query_embedding = retry_ai_call(get_embedding, query)
 
     results = collection.query(
         query_embeddings=[query_embedding],
