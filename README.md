@@ -17,6 +17,7 @@ It is built with Google Gemini, ChromaDB, LangChain text splitting, and Streamli
 - Generated context-aware responses using Google Gemini
 - Added confidence-based escalation when retrieved context is insufficient
 - Created a Streamlit interface for testing support queries interactively
+- Implemented reusable retry handling with exponential backoff for improved resilience against temporary AI service failures
 
 ## Features ✨
 
@@ -34,6 +35,7 @@ It is built with Google Gemini, ChromaDB, LangChain text splitting, and Streamli
 - Supports `.md`, `.txt`, and `.pdf` knowledge documents
 - Automatic chunking with LangChain text splitters
 - Streamlit web interface
+- Automatic retry with exponential backoff for temporary AI service failures
 
 ## Tech Stack 🧰
 
@@ -83,12 +85,14 @@ flowchart TD
 customer-support-agent/
 |
 |-- app.py
+|-- chroma_db
 |-- requirements.txt
 |-- README.md
 |-- .env.example
 |-- data/
 |-- screenshots/
 |-- src/
+|   |-- ai_utils.py
 |   |-- config.py
 |   |-- rag_pipeline.py
 |   |-- vector_store.py
@@ -102,11 +106,13 @@ customer-support-agent/
 | File | Responsibility |
 |---|---|
 | `app.py` | Streamlit entry point; handles user interaction and app flow |
+| `chroma_db` | Pre-built ChromaDB vector store containing generated embeddings for faster startup and reduced embedding API usage |
 | `requirements.txt` | Python dependencies for local/dev/deployment setup |
 | `README.md` | Project documentation |
 | `.env.example` | Template for environment variable configuration |
 | `data/` | Knowledge base source files (`.md`, `.txt`, `.pdf`) used for retrieval |
 | `screenshots/` | UI and result screenshots for documentation |
+| `src/ai_utils.py` | Shared utilities for AI retry handling, exponential backoff, and temporary error detection |
 | `src/config.py` | Centralized configuration (paths, model names, constants) |
 | `src/rag_pipeline.py` | End-to-end orchestration of the RAG workflow |
 | `src/vector_store.py` | ChromaDB initialization, indexing, and retrieval operations |
@@ -120,7 +126,7 @@ customer-support-agent/
 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/ai-persona-support-agent.git
+git clone https://github.com/avanishtatat/ai-persona-support-agent.git
 cd ai-persona-support-agent
 ```
 
@@ -158,6 +164,12 @@ cp .env.example .env
 streamlit run app.py
 ```
 
+> **Note**
+>
+> This project includes a pre-built **ChromaDB** vector store generated from the sample knowledge-base documents. Including the vector database avoids regenerating embeddings on every deployment, resulting in faster startup and reduced embedding API usage.
+>
+> If you modify or add knowledge-base documents, regenerate the vector store before running or deploying the application.
+
 ## Environment Variables 🔐
 
 | Variable | Required | Description |
@@ -166,7 +178,7 @@ streamlit run app.py
 
 ## Deployment 🌐
 
-This application is deployed using **Streamlit Community Cloud**.
+This application is deployed on **Streamlit Community Cloud** and uses a persistent ChromaDB vector store for fast document retrieval.
 
 - Live App: `https://ai-persona-support-agent-ja2ydakgcx4sla3gpzyczh.streamlit.app/`
 

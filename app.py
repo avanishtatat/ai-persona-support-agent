@@ -30,7 +30,6 @@ if st.button('Generate response'):
             context_chunks = format_search_results(results)
 
             response = retry_ai_call(generate_adaptive_response, user_query, persona, context_chunks)
-        
         st.subheader("Detected Persona:")
             
         st.markdown(f"**Persona:** {persona}")
@@ -57,7 +56,13 @@ if st.button('Generate response'):
             st.info("No files were retrieved.")
 
     except Exception as e:
-        if is_temporary_ai_error(e):
+        error_message = str(e).lower()
+        if 'quota exceeded' in error_message:
+            st.warning(
+                "ResolveAI has reached the free-tier quota for AI usage limit for today. \n\n"
+                "Please retry again later."
+            )
+        elif is_temporary_ai_error(e):
             st.warning(
                 "ResolveAI is temporarily experiencing high demand from the AI service.\n\n"
                 "Please wait a few moments and try again."

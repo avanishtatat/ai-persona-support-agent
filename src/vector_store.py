@@ -44,7 +44,10 @@ def add_chunks_to_vector_store(chunks):
 
 def initialize_vector_store():
     if collection.count() > 0:
+        print("Using existing ChromaDB collection.")
         return 
+    
+    print("Building ChromaDB collection...")
     
     documents = load_documents()
     chunks = split_documents(documents)

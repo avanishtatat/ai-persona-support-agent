@@ -220,7 +220,7 @@ __marimo__/
 .streamlit/secrets.toml
 
 # ChromaDB
-chroma_db/
+# chroma_db/
 
 # macOS
 .DS_Store
